@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: kinetic-backend
+    env_file:
+      - ./.env
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: kinetic-frontend
+    environment:
+      BACKEND_PROXY_URL: http://backend:8000
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: unless-stopped

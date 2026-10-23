@@ -1,0 +1,31 @@
+{
+  "_sample": true,
+  "_note": "Placeholder figures for UI review only - not a real KPI run. Replace by writing the pipeline output to public/data/evidence.json.",
+  "run_stats": {
+    "run_id": 0,
+    "as_of_timestamp": "sample data",
+    "cases_total": 1000,
+    "cases_closed": 902,
+    "cases_disbursed": 851,
+    "cases_open": 98,
+    "cases_stalled": 0,
+    "events_total": 54410
+  },
+  "tier1_all": [
+    { "kpi_id": "T1-01", "kpi_name": "End-to-End Cycle Time", "current_value": 15.2, "target": 12, "unit": "days", "better_when": "lower", "variance_vs_target_pct": 26.7, "health": "Critical", "trend_direction": "down", "previous_value": 14.6 },
+    { "kpi_id": "T1-02", "kpi_name": "SLA Compliance", "current_value": 74.5, "target": 90, "unit": "%", "better_when": "higher", "variance_vs_target_pct": 17.2, "health": "Watch", "trend_direction": "down", "previous_value": 76.1 },
+    { "kpi_id": "T1-03", "kpi_name": "First-Time-Right", "current_value": 65.2, "target": 80, "unit": "%", "better_when": "higher", "variance_vs_target_pct": 18.5, "health": "Watch", "trend_direction": "flat", "previous_value": 65.2 },
+    { "kpi_id": "T1-04", "kpi_name": "Rework Rate", "current_value": 34.8, "target": 10, "unit": "%", "better_when": "lower", "variance_vs_target_pct": 248.0, "health": "Critical", "trend_direction": "down", "previous_value": 32.1 },
+    { "kpi_id": "T1-05", "kpi_name": "Handoff Count", "current_value": 9.4, "target": 8, "unit": "per case", "better_when": "lower", "variance_vs_target_pct": 17.5, "health": "Watch", "trend_direction": "flat", "previous_value": 9.4 },
+    { "kpi_id": "T1-06", "kpi_name": "Waiting Time", "current_value": 4.7, "target": 4, "unit": "days", "better_when": "lower", "variance_vs_target_pct": 17.5, "health": "Watch", "trend_direction": "up", "previous_value": 5.0 },
+    { "kpi_id": "T1-07", "kpi_name": "Manual Activities", "current_value": 23.8, "target": 20, "unit": "%", "better_when": "lower", "variance_vs_target_pct": 19.0, "health": "Watch", "trend_direction": "flat", "previous_value": 23.9 },
+    { "kpi_id": "T1-08", "kpi_name": "Exception Rate", "current_value": 11.5, "target": 10, "unit": "%", "better_when": "lower", "variance_vs_target_pct": 15.0, "health": "Watch", "trend_direction": "up", "previous_value": 12.4 },
+    { "kpi_id": "T1-09", "kpi_name": "Cost per Loan", "current_value": 13240, "target": 12000, "unit": "USD", "better_when": "lower", "variance_vs_target_pct": 10.3, "health": "Watch", "trend_direction": "down", "previous_value": 13010 },
+    { "kpi_id": "T1-10", "kpi_name": "Disbursement TAT", "current_value": 4.6, "target": 5, "unit": "days", "better_when": "lower", "variance_vs_target_pct": -8.0, "health": "Healthy", "trend_direction": "up", "previous_value": 4.9 },
+    { "kpi_id": "T1-11", "kpi_name": "Stalled Cases", "current_value": 0, "target": 0, "unit": "cases", "better_when": "lower", "variance_vs_target_pct": null, "health": "Healthy", "trend_direction": "up", "previous_value": 6 },
+    { "kpi_id": "T1-12", "kpi_name": "Open Cases (WIP)", "current_value": 98, "target": null, "unit": "cases", "better_when": "lower", "variance_vs_target_pct": null, "health": "Informational", "trend_direction": null, "previous_value": null },
+    { "kpi_id": "T1-13", "kpi_name": "Approval Rate", "current_value": 94.3, "target": null, "unit": "%", "better_when": "higher", "variance_vs_target_pct": null, "health": "Informational", "trend_direction": null, "previous_value": null },
+    { "kpi_id": "T1-14", "kpi_name": "Application Volume", "current_value": 1000, "target": null, "unit": "cases", "better_when": "higher", "variance_vs_target_pct": null, "health": "Informational", "trend_direction": null, "previous_value": null },
+    { "kpi_id": "T1-15", "kpi_name": "Straight-Through Processing", "current_value": 26.5, "target": 30, "unit": "%", "better_when": "higher", "variance_vs_target_pct": 11.7, "health": "Watch", "trend_direction": "flat", "previous_value": 26.4 }
+  ]
+}

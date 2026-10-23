@@ -1,0 +1,169 @@
+{
+  "_sample": true,
+  "_note": "Illustrative root causes for UI review only - not produced by the agent and not a finding about any real portfolio. Replace by writing the agent output to public/data/root_causes.json.",
+  "frontend_summary": {
+    "analysis_title": "Corporate Loan Root Cause Analysis (sample)",
+    "analysis_summary": {
+      "critical_tier1_count": 2,
+      "critical_kpis": [
+        {
+          "kpi_id": "T1-01",
+          "kpi_name": "End-to-End Cycle Time",
+          "current_value": 15.2,
+          "target": 12,
+          "unit": "days",
+          "variance_vs_target_pct": 26.7,
+          "health": "Critical",
+          "kpi_performance_summary": "End-to-End Cycle Time is 15.2 days against a 12-day target, making it 26.7% worse than target and Critical.",
+          "why_not_performing": "The evidence indicates cycle-time deterioration is concentrated in approval-layer waiting and in information dependencies on the RM, which together add several days of non-working time to a large share of disbursed cases before any additional processing effort is considered.",
+          "top_root_causes": [
+            {
+              "rank": 1,
+              "root_cause": "Excessive approval-layer waiting",
+              "root_cause_summary": "Cases wait between sequential approval layers rather than being processed, with approval steps accounting for the largest single block of waiting time in the process.",
+              "impact_summary": "Adds roughly 3.1 days of waiting to the average disbursed case and breaches the Monitoring & Approval stage SLA in a substantial share of cases.",
+              "confidence": "High",
+              "statistics": [
+                { "metric": "Average approval waiting", "value": 3.1, "unit": "days" },
+                { "metric": "Approval layers per case", "value": 3.2, "unit": "layers" },
+                { "metric": "Stage SLA breach", "value": 42.0, "unit": "%" }
+              ],
+              "gap_references": ["G16", "G17"],
+              "linked_tier2_kpis": ["T2-12", "T2-13"],
+              "affected_cases": { "count": 851, "percentage": 100.0 }
+            },
+            {
+              "rank": 2,
+              "root_cause": "Fragmented RM and customer information exchange",
+              "root_cause_summary": "Incomplete submissions trigger repeated information requests handled over email, so the case idles while the analyst waits for the RM to respond.",
+              "impact_summary": "Affects roughly a third of cases and contributes multiple days of waiting per affected case.",
+              "confidence": "High",
+              "statistics": [
+                { "metric": "Cases with an information request", "value": 31.4, "unit": "%" },
+                { "metric": "Average RM response time", "value": 2.4, "unit": "days" },
+                { "metric": "Information request rounds", "value": 1.8, "unit": "rounds" }
+              ],
+              "gap_references": ["G01", "G07", "G08"],
+              "linked_tier2_kpis": ["T2-02", "T2-03", "T2-04"],
+              "affected_cases": { "count": 267, "percentage": 31.4 }
+            },
+            {
+              "rank": 3,
+              "root_cause": "Credit review queueing before analysis starts",
+              "root_cause_summary": "Cases sit in the Credit Review queue before an analyst picks them up, with the delay concentrated in allocation rather than in the analysis itself.",
+              "impact_summary": "Adds around 1.6 days before analysis begins, and the Credit Review stage is the largest contributor to elapsed cycle time.",
+              "confidence": "Medium",
+              "statistics": [
+                { "metric": "Queue time before analysis", "value": 1.6, "unit": "days" },
+                { "metric": "Share of total cycle time", "value": 34.0, "unit": "%" }
+              ],
+              "gap_references": ["G14"],
+              "linked_tier2_kpis": ["T2-37", "T2-35"],
+              "affected_cases": { "count": 851, "percentage": 100.0 }
+            },
+            {
+              "rank": 4,
+              "root_cause": "Legal review dependency on high-value cases",
+              "root_cause_summary": "Cases routed to Legal wait for contract review with no service-level commitment on the return, extending the tail of the distribution.",
+              "impact_summary": "Concentrated in a minority of cases but adds material waiting where it applies.",
+              "confidence": "Medium",
+              "statistics": [
+                { "metric": "Cases routed to Legal", "value": 22.6, "unit": "%" },
+                { "metric": "Average waiting for Legal", "value": 2.9, "unit": "days" }
+              ],
+              "gap_references": ["G25"],
+              "linked_tier2_kpis": ["T2-24", "T2-25"],
+              "affected_cases": { "count": 192, "percentage": 22.6 }
+            },
+            {
+              "rank": 5,
+              "root_cause": "Re-keying between disconnected systems",
+              "root_cause_summary": "The same case data is captured more than once across the systems used in the process, adding processing effort at each handoff.",
+              "impact_summary": "Adds measurable processing hours per case and increases the number of systems each case touches.",
+              "confidence": "Medium",
+              "statistics": [
+                { "metric": "Re-keying effort per case", "value": 1.3, "unit": "hours" },
+                { "metric": "Systems touched per case", "value": 4.6, "unit": "systems" }
+              ],
+              "gap_references": ["G09", "G22"],
+              "linked_tier2_kpis": ["T2-29", "T2-33"],
+              "affected_cases": { "count": 851, "percentage": 100.0 }
+            }
+          ]
+        },
+        {
+          "kpi_id": "T1-04",
+          "kpi_name": "Rework Rate",
+          "current_value": 34.8,
+          "target": 10,
+          "unit": "%",
+          "variance_vs_target_pct": 248.0,
+          "health": "Critical",
+          "kpi_performance_summary": "Rework Rate is 34.8% against a 10% target, nearly three and a half times the target level, and Critical.",
+          "why_not_performing": "The evidence shows rework is dominated by a small number of recurring loops - documentation and information requests, manual spreading corrections, and conditions returned after approval - rather than by isolated one-off errors.",
+          "top_root_causes": [
+            {
+              "rank": 1,
+              "root_cause": "Recurring documentation and information rework",
+              "root_cause_summary": "Missing or incomplete documentation at submission is corrected later in the process, so the same case is worked more than once.",
+              "impact_summary": "The largest rework loop by both case coverage and days lost.",
+              "confidence": "High",
+              "statistics": [
+                { "metric": "Cases affected", "value": 267, "unit": "cases" },
+                { "metric": "Days lost to the loop", "value": 412.0, "unit": "days" },
+                { "metric": "Average days lost per affected case", "value": 1.54, "unit": "days" }
+              ],
+              "gap_references": ["G01", "G05", "G06", "G07"],
+              "linked_tier2_kpis": ["T2-02", "T2-05"],
+              "affected_cases": { "count": 267, "percentage": 31.4 }
+            },
+            {
+              "rank": 2,
+              "root_cause": "Manual financial spreading corrections",
+              "root_cause_summary": "Financial spreading is performed manually outside the core system, and errors surface at review, requiring the spread to be redone.",
+              "impact_summary": "Drives repeated analyst effort on affected cases and contributes directly to first-time-right failure.",
+              "confidence": "High",
+              "statistics": [
+                { "metric": "Spreading rework rate", "value": 12.8, "unit": "%" },
+                { "metric": "Manual spreading effort", "value": 2.1, "unit": "hours" }
+              ],
+              "gap_references": ["G10"],
+              "linked_tier2_kpis": ["T2-09", "T2-10"],
+              "affected_cases": { "count": 109, "percentage": 12.8 }
+            },
+            {
+              "rank": 3,
+              "root_cause": "Conditions returned after approval",
+              "root_cause_summary": "Approvals granted with conditions are returned for correction because the conditions are not consistently tracked in the system.",
+              "impact_summary": "Sends already-approved cases back through credit and approval steps, repeating work already completed.",
+              "confidence": "Medium",
+              "statistics": [
+                { "metric": "Conditional approval rate", "value": 28.3, "unit": "%" },
+                { "metric": "Conditions tracked in system", "value": 61.0, "unit": "%" },
+                { "metric": "Conditional return rate", "value": 9.4, "unit": "%" }
+              ],
+              "gap_references": ["G15", "G27"],
+              "linked_tier2_kpis": ["T2-14", "T2-15", "T2-16"],
+              "affected_cases": { "count": 80, "percentage": 9.4 }
+            },
+            {
+              "rank": 4,
+              "root_cause": "Collateral and guarantor data corrections",
+              "root_cause_summary": "Collateral records captured as free text are reconciled later, and duplicate guarantor records are resolved manually.",
+              "impact_summary": "A smaller loop by volume, but one that consistently produces control exceptions late in the process.",
+              "confidence": "Medium",
+              "statistics": [
+                { "metric": "Collateral discrepancy rate", "value": 6.2, "unit": "%" },
+                { "metric": "Free-text collateral records", "value": 44.0, "unit": "%" }
+              ],
+              "gap_references": ["G19", "G20", "G28"],
+              "linked_tier2_kpis": ["T2-19", "T2-20", "T2-22"],
+              "affected_cases": { "count": 53, "percentage": 6.2 }
+            }
+          ]
+        }
+      ],
+      "overall_observation": "Across both Critical KPIs the dominant themes are waiting created by sequential approval layers and by information dependencies outside the processing team, and repeated work created by a small number of recurring loops - documentation, manual spreading, and conditions returned after approval. Effort-side issues such as re-keying between systems are present but secondary to waiting and rework."
+    }
+  }
+}

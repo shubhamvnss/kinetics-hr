@@ -1,0 +1,223 @@
+2026-09-29 11:29:22,559 | ERROR | app.api.v1.endpoints.to_be_transformation | to_be_transformation.py:50 | To-Be generation failed for root cause RC-T1-01-1
+Traceback (most recent call last):
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 397, in run
+    recommendation, model = generate_recommendation(recommendation_context, client=client)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\agents\recommendation_agent.py", line 437, in generate
+    raise RecommendationError(f'The recommendation could not be validated: {last_error}')
+app.agents.recommendation_agent.RecommendationError: The recommendation could not be validated: 16 validation errors for RecommendationLLM
+agents.0.action
+  Input should be a valid list [type=list_type, input_value={'description': 'Orchestr... and SLA compliance.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/list_type
+agents.0.trigger
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...and SLA compliance.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.systems
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...and SLA compliance.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.human_in_loop
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...and SLA compliance.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.human_in_loop_detail
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...and SLA compliance.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.expected_outcome
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...and SLA compliance.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.sequence_order
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...and SLA compliance.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.action
+  Input should be a valid list [type=list_type, input_value={'description': 'Provide ...ompromising control.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/list_type
+agents.1.trigger
+  Field required [type=missing, input_value={'agent_id': 'process_gov...mpromising control.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.systems
+  Field required [type=missing, input_value={'agent_id': 'process_gov...mpromising control.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.human_in_loop
+  Field required [type=missing, input_value={'agent_id': 'process_gov...mpromising control.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.human_in_loop_detail
+  Field required [type=missing, input_value={'agent_id': 'process_gov...mpromising control.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.expected_outcome
+  Field required [type=missing, input_value={'agent_id': 'process_gov...mpromising control.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.sequence_order
+  Field required [type=missing, input_value={'agent_id': 'process_gov...mpromising control.'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+future_state
+  Field required [type=missing, input_value={'routing_key': 'T1-01|NO...romising control.'}]}}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+routing_key
+  Extra inputs are not permitted [type=extra_forbidden, input_value='T1-01|NONE|NONE', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.8/v/extra_forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\api\v1\endpoints\to_be_transformation.py", line 23, in to_be_transformation
+    return run(root_cause_id)
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 423, in run
+    raise ToBeGenerationError("The To-Be recommendation could not be generated or validated.") from error
+app.services.to_be_transformation_service.ToBeGenerationError: The To-Be recommendation could not be generated or validated.
+2026-09-29 11:31:32,028 | ERROR | app.api.v1.endpoints.to_be_transformation | to_be_transformation.py:50 | To-Be generation failed for root cause RC-T1-01-1
+Traceback (most recent call last):
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 397, in run
+    recommendation, model = generate_recommendation(recommendation_context, client=client)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\agents\recommendation_agent.py", line 437, in generate
+    _strip_invalid_systems(plan, allowed_systems)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+app.agents.recommendation_agent.RecommendationError: The recommendation could not be validated: 32 validation errors for RecommendationLLM
+summary
+  Input should be a valid string [type=string_type, input_value={'problem_statement': 'En...ntrated in this stage.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/string_type
+representative_case_explanation
+  Input should be a valid string [type=string_type, input_value={'link_to_root_cause': 'T... case events provided.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/string_type
+agents.0.purpose
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.problem_addressed
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.impact
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.why_this_agent
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.action
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.trigger
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.systems
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.human_in_loop
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.human_in_loop_detail
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.expected_outcome
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.sequence_order
+  Field required [type=missing, input_value={'agent_id': 't1_01', 'na...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.0.role
+  Extra inputs are not permitted [type=extra_forbidden, input_value='Primary executor for cycle-time remediation', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.8/v/extra_forbidden
+agents.0.actions
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[{'action_id': 't1_01_1',...-to-End Cycle Time.'}]}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.8/v/extra_forbidden
+agents.1.purpose
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.problem_addressed
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.impact
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.why_this_agent
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.action
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.trigger
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.systems
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.human_in_loop
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.human_in_loop_detail
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.expected_outcome
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.sequence_order
+  Field required [type=missing, input_value={'agent_id': 'process_gov...to-End Cycle Time.'}]}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+agents.1.role
+  Extra inputs are not permitted [type=extra_forbidden, input_value='Governance, oversight, a...dit of remediation plan', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.8/v/extra_forbidden
+agents.1.actions
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[{'action_id': 'gov_1', '...-to-End Cycle Time.'}]}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.8/v/extra_forbidden
+future_state.steps
+  Field required [type=missing, input_value={'target_condition': 'Sta... for disbursed cases.'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+future_state.target_condition
+  Extra inputs are not permitted [type=extra_forbidden, input_value='Stage 2 – Credit Revie...ards the 12-day target.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.8/v/extra_forbidden
+future_state.key_operational_changes
+  Extra inputs are not permitted [type=extra_forbidden, input_value=['RM information requirem...peated back-and-forth.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.8/v/extra_forbidden
+future_state.expected_kpi_shift
+  Extra inputs are not permitted [type=extra_forbidden, input_value={'tier1_kpi_id': 'T1-01',...) for disbursed cases.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/extra_forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\api\v1\endpoints\to_be_transformation.py", line 23, in to_be_transformation
+    return run(root_cause_id)
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 423, in run
+    raise ToBeGenerationError("The To-Be recommendation could not be generated or validated.") from error
+app.services.to_be_transformation_service.ToBeGenerationError: The To-Be recommendation could not be generated or validated.
+2026-09-29 12:19:42,604 | ERROR | app.api.v1.endpoints.to_be_transformation | to_be_transformation.py:59 | To-Be transformation failed for root cause RC-T1-01-3
+Traceback (most recent call last):
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\api\v1\endpoints\to_be_transformation.py", line 23, in to_be_transformation
+    return run(root_cause_id)
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 378, in run
+    observed_systems = _case_systems(current_state)
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 140, in _case_systems
+    return sorted({system for row in current_state for system in row["system_used"]})
+                                                                 ~~~^^^^^^^^^^^^^^^
+KeyError: 'system_used'
+2026-09-29 12:24:07,027 | ERROR | app.api.v1.endpoints.to_be_transformation | to_be_transformation.py:59 | To-Be transformation failed for root cause RC-T1-01-3
+Traceback (most recent call last):
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\api\v1\endpoints\to_be_transformation.py", line 23, in to_be_transformation
+    return run(root_cause_id)
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 438, in run
+    section4 = _section4(current_state, to_be_rows)
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 265, in _section4
+    "manual_activities": {"current": sum(bool(row["manual_touch"]) for row in current_state), "to_be": len(human_controlled)},
+                                     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\kinetics\kinetic-app (4)\kinetic-app\backend\app\services\to_be_transformation_service.py", line 265, in <genexpr>
+    "manual_activities": {"current": sum(bool(row["manual_touch"]) for row in current_state), "to_be": len(human_controlled)},
+                                              ~~~^^^^^^^^^^^^^^^^
+KeyError: 'manual_touch'
+2026-10-23 23:17:24,736 | ERROR | app.services.root_cause_service | root_cause_service.py:162 | Service Error
+Traceback (most recent call last):
+  File "C:\Users\subhakumar\Downloads\kinetic-app 3\kinetic-app\backend\app\services\root_cause_service.py", line 153, in get_root_cause_analysis
+    result = RootCauseRepository.get_latest_analysis()
+  File "C:\Users\subhakumar\Downloads\kinetic-app 3\kinetic-app\backend\app\repositories\root_cause_repository.py", line 19, in get_latest_analysis
+    cur.execute(
+    ~~~~~~~~~~~^
+        f"""
+        ^^^^
+    ...<8 lines>...
+        """
+        ^^^
+    )
+    ^
+  File "C:\projects\python-3.13.12-embed-amd64\Lib\site-packages\psycopg2\extras.py", line 236, in execute
+    return super().execute(query, vars)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "hr_process.corporate_loan_root_causes" does not exist
+LINE 7:                     FROM hr_process.corporate_loan_root_caus...
+                                 ^
+
